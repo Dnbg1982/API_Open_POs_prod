@@ -2,14 +2,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-#from openpyxl import Workbook, load_workbook
-#from openpyxl.utils import get_column_letter
 from datetime import datetime, timedelta, date
 import plotly.graph_objects as go
 import plotly.express as px
-import warnings
 import streamlit as st
-warnings.filterwarnings('ignore')
 
 
 def home():
@@ -18,7 +14,7 @@ def home():
 
     csv_file = st.file_uploader('Upload CSV File', type=['csv'])
     if csv_file is not None:
-        Gold_data = pd.read_csv(r'C:\Users\USUARIO\Downloads\Gold Data.csv', index_col=0, encoding='latin-1', parse_dates=True)   
+        Gold_data = pd.read_csv(csv_file, index_col=0, encoding='latin-1', parse_dates=True)   
         Gold_data.reset_index(inplace=True)
         Gold_data = Gold_data[['Field Purchase Order','Field PO Item','Material Number','Total Price (Value)','Field PO Vendor','HUB SO Process Class','Field PO Date','Field PO Request Date(RDD)','OBS Creation Date HUB','ETA','Field PO GR Date']]
         Gold_data['Field PO Date'] = pd.to_datetime(Gold_data['Field PO Date']).values
@@ -37,7 +33,7 @@ def gr_pos():
     
     csv_file = st.file_uploader('Upload CSV File', type=['csv'])
     if csv_file is not None:
-        Gold_data = pd.read_csv(r'C:\Users\USUARIO\Downloads\Gold Data.csv', index_col=0, encoding='latin-1', parse_dates=True)   
+        Gold_data = pd.read_csv(csv_file, index_col=0, encoding='latin-1', parse_dates=True)   
         Gold_data.reset_index(inplace=True)
         Gold_data = Gold_data[['Field Purchase Order','Field PO Item','Material Number','Total Price (Value)','Field PO Vendor','HUB SO Process Class','Field PO Date','Field PO Request Date(RDD)','OBS Creation Date HUB','ETA','Field PO GR Date']]
         Gold_data['Field PO Date'] = pd.to_datetime(Gold_data['Field PO Date']).values
@@ -80,7 +76,7 @@ def no_eta_pos():
     
     csv_file = st.file_uploader('Upload CSV File', type=['csv'])
     if csv_file is not None:
-        Gold_data = pd.read_csv(r'C:\Users\USUARIO\Downloads\Gold Data.csv', index_col=0, encoding='latin-1', parse_dates=True)   
+        Gold_data = pd.read_csv(csv_file, index_col=0, encoding='latin-1', parse_dates=True)   
         Gold_data.reset_index(inplace=True)
         Gold_data = Gold_data[['Field Purchase Order','Field PO Item','Material Number','Total Price (Value)','Field PO Vendor','HUB SO Process Class','Field PO Date','Field PO Request Date(RDD)','OBS Creation Date HUB','ETA','Field PO GR Date']]
         Gold_data['Field PO Date'] = pd.to_datetime(Gold_data['Field PO Date']).values
@@ -120,7 +116,7 @@ def eta_pos():
     st.header('POs with ETA')
     csv_file = st.file_uploader('Upload CSV File', type=['csv'])
     if csv_file is not None:
-        Gold_data = pd.read_csv(r'C:\Users\USUARIO\Downloads\Gold Data.csv', index_col=0, encoding='latin-1', parse_dates=True)   
+        Gold_data = pd.read_csv(csv_file, index_col=0, encoding='latin-1', parse_dates=True)   
         Gold_data.reset_index(inplace=True)
         Gold_data = Gold_data[['Field Purchase Order','Field PO Item','Material Number','Total Price (Value)','Field PO Vendor','HUB SO Process Class','Field PO Date','Field PO Request Date(RDD)','OBS Creation Date HUB','ETA','Field PO GR Date']]
         Gold_data['Field PO Date'] = pd.to_datetime(Gold_data['Field PO Date']).values
@@ -156,7 +152,7 @@ def tracking_pos():
 
     csv_file = st.file_uploader('Upload CSV File', type=['csv'])
     if csv_file is not None:
-        Gold_data = pd.read_csv(r'C:\Users\USUARIO\Downloads\Gold Data.csv', index_col=0, encoding='latin-1', parse_dates=True)   
+        Gold_data = pd.read_csv(csv_file, index_col=0, encoding='latin-1', parse_dates=True)   
         Gold_data.reset_index(inplace=True)
         Gold_data = Gold_data[['Field Purchase Order','Field PO Item','Material Number','Total Price (Value)','Field PO Vendor','HUB SO Process Class','Field PO Date','Field PO Request Date(RDD)','OBS Creation Date HUB','ETA','Field PO GR Date']]
         Gold_data['Field PO Date'] = pd.to_datetime(Gold_data['Field PO Date']).values
